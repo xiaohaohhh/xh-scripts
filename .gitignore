@@ -1,0 +1,49 @@
+# 日志文件
+*.log
+gas_query_log.txt
+
+# 配置文件（包含敏感信息）
+config.js
+config.py
+.env
+.env.*
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 测试文件
+test-*.js
+test-*.py
+*_test.js
+*_test.py
+
+# 临时文件
+*.tmp
+*.temp
+*.bak
+
+# 开发文件
+AGENTS.md
