@@ -6,8 +6,14 @@
 
 在青龙面板中添加订阅：
 
+**国内服务器建议使用代理拉取：**
+```bash
+ql repo https://ghproxy.imciel.com/https://github.com/xiaohaohhh/xh-scripts.git "xh_" "utils" "py|js"
 ```
-ql repo https://github.com/xiaohaohhh/xh_scripts.git "xh_" "utils" "py|js"
+
+**国外服务器可以直接拉取：**
+```bash
+ql repo https://github.com/xiaohaohhh/xh-scripts.git "xh_" "utils" "py|js"
 ```
 
 或者单独拉取某个脚本：
