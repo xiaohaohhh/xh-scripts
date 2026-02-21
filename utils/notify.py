@@ -169,17 +169,23 @@ def send_pushplus(title, content, token=None, topic=None, template=None, channel
     # 移除内部的 broad try/except 以便异常能够向上抛出，或者在最后把失败转为异常
     url = 'https://www.pushplus.plus/send'
     data = {
-        'token': pushplus_token,
+        'token': pushplus_token.strip(),
         'title': title,
         'content': content,
-        'topic': topic or push_config['PUSH_PLUS_USER'],
-        'template': template or push_config['PUSH_PLUS_TEMPLATE'],
-        'channel': channel or push_config['PUSH_PLUS_CHANNEL']
+        'topic': (topic or push_config['PUSH_PLUS_USER']).strip(),
+        'template': (template or push_config['PUSH_PLUS_TEMPLATE']).strip(),
+        'channel': (channel or push_config['PUSH_PLUS_CHANNEL']).strip()
+    }
+    
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Content-Type': 'application/json'
     }
     
     response = requests.post(
         url,
         json=data,
+        headers=headers,
         timeout=10
     )
     

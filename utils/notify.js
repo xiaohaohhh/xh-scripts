@@ -131,19 +131,20 @@ async function sendPushPlus(title, content, options = {}) {
     
     const url = 'https://www.pushplus.plus/send';
     const data = JSON.stringify({
-        token: token,
+        token: token.trim(),
         title: title,
         content: content,
-        topic: options.topic || push_config.PUSH_PLUS_USER,
-        template: options.template || push_config.PUSH_PLUS_TEMPLATE,
-        channel: options.channel || push_config.PUSH_PLUS_CHANNEL
+        topic: (options.topic || push_config.PUSH_PLUS_USER).trim(),
+        template: (options.template || push_config.PUSH_PLUS_TEMPLATE).trim(),
+        channel: (options.channel || push_config.PUSH_PLUS_CHANNEL).trim()
     });
     
     const response = await httpRequest(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Content-Length': Buffer.byteLength(data)
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Content-Length': Buffer.byteLength(data, 'utf8')
         },
         body: data
     });
