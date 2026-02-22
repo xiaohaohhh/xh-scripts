@@ -252,6 +252,17 @@ async function checkBalanceAndNotify(data) {
         return;
     }
     
+    // 获取脚本执行时的当前时间
+    const currentTime = new Date().toLocaleString('zh-CN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    });
+    
     // 余额低于阈值，准备发送通知
     let title, content, isCritical;
     
@@ -273,11 +284,9 @@ async function checkBalanceAndNotify(data) {
     </p>
     <hr style="border-color: white;">
     <p style="font-size: 14px;">
-        📅 查询时间: ${data.dataTime || new Date().toLocaleString('zh-CN')}<br>
+        📅 查询时间: ${currentTime}<br>
         👤 客户编号: ${data.custCode || 'N/A'}<br>
         🔢 累计用气: ${data.gas || 'N/A'} m³<br>
-        🚪 阀门状态: ${data.valveStateStr || 'N/A'}<br>
-        🔋 电池电压: ${data.volt || 'N/A'} V
     </p>
 </div>
         `.trim();
@@ -301,11 +310,9 @@ async function checkBalanceAndNotify(data) {
     </p>
     <hr style="border-color: white;">
     <p style="font-size: 13px;">
-        📅 查询时间: ${data.dataTime || new Date().toLocaleString('zh-CN')}<br>
+        📅 查询时间: ${currentTime}<br>
         👤 客户编号: ${data.custCode || 'N/A'}<br>
         🔢 累计用气: ${data.gas || 'N/A'} m³<br>
-        🚪 阀门状态: ${data.valveStateStr || 'N/A'}<br>
-        🔋 电池电压: ${data.volt || 'N/A'} V
     </p>
 </div>
         `.trim();
